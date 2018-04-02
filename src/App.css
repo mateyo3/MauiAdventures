@@ -1,0 +1,96 @@
+body {
+  margin: 5px;
+}
+
+
+
+/* NAV BAR */
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding-left: 10;
+  float: right;
+}
+
+
+li {
+  display: inline;
+  padding-left: 15px;
+  color: white;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.main-nav a:hover {
+  color: gray;
+  text-decoration: none;
+}
+
+#navbar-logo {
+  height: 40px;
+}
+
+
+
+
+/* HEADER */
+.header {
+  background: #292C34;
+  color: #fff;
+  padding: 10px;
+  text-align: middle;
+  border-radius: .35em;
+}
+
+#likes {
+text-align: right;
+}
+
+
+.toggle-buttons {
+  padding: 10px;
+}
+
+/* CARDS */
+h1, h2 {
+  color: white;
+}
+
+.website {
+  color: blue;
+  font-weight: bold;
+}
+
+a:hover {
+  color: gray;
+  text-decoration: none;
+}
+
+.side-image {
+  width: 100%;
+  border-radius: .35em;
+}
+
+
+.md-col-4 {
+  padding: 1em;
+  text-align: center;
+  background: #f7f7f7;
+  border-radius: .35em;
+  margin: 0 .5em .8em;
+}
+
+
+
+/* FOOTER */
+.main-footer {
+  background: #292C34;
+  color: #fff;
+  padding: 2em 0;
+  margin-top: 30px;
+  text-align: center;
+  border-radius: .35em;
+}
