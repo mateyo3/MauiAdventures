@@ -17,11 +17,7 @@ const StaticComponent = (props) => {
 const NavBar = () => {
   return (
     <nav className="navbar navbar-default">
-         <div className="navbar-header">
-              <a id="menu-item" className="shop main-nav text-uppercase font-weight-bold" href="#">
-            Maui Adventures
-              </a>
-            </div>
+      <NavLogo />
          <div id="menu-standard" className="nav">
               <ul>
                 <li id="menu-item" className="saved main-nav text-uppercase font-weight-bold"><a href="#">Saved</a></li>
@@ -32,23 +28,117 @@ const NavBar = () => {
   );
 }
 
-const Header = (props) => {
+// COMPONENT FOR MAIN LOGO
+const NavLogo = () => {
+  return (
+      <NavLogoLink 
+        href={"#"}
+        src={"http://inception-app-prod.s3.amazonaws.com/N2Y3MDdlZWUtYWU4OC00NDk1LTk0NDktZTk0OWY3NmQ2NDQx/logo/2017/05/Islands.png"}
+      />
+  );
+}
+
+// PULLS PROPERTIES FROM PARENT COMPONENT, NavLogo
+const NavLogoLink = (props) => {
+  return (
+    <div className="navbar-header">
+      <a className="logo" href={props.href}>
+        <img className="image-responsive" id="navbar-logo" src={props.src} />
+      </a>
+    </div>
+  );
+}
+
+const Navigation = () => {
+  return (
+      <div id="menu-standard" className="nav">
+        <ul>
+          <NavLink 
+                href={"#"}
+                linkName={"Saved"}
+          />
+          <NavLink 
+                href={"#"}
+                linkName={"Sign-in"}
+          />
+        </ul>
+      </div>
+  );
+}
+
+// PULLS PROPERTIES FROM PARENT COMPONENT, NavLinks
+const NavLink = (props) => {
+  return (
+    <li id="menu-item" className="shop main-nav text-uppercase font-weight-bold">
+      <a href={props.href}>{props.linkName}</a>
+    </li>
+  );
+}
+
+const Header = () => {
   return (
     <header className="header">
       <div className="row">
-        <div className="col-md-6"><h3 id="now-viewing">NOW VIEWING</h3></div>
-        <div className="col-md-6"><h3 id="likes">LIKES: <span>0</span></h3></div>
+        <Category />
+        <LikeCount />
       </div>
     </header>
   );
 }
 
+const Category = () => {
+  return (
+    <NowViewing 
+      nowViewing={"NOW VIEWING"}
+    />
+  );
+}
+
+// PULLS PROPERTIES FROM PARENT COMPONENT, Category
+const NowViewing = (props) => {
+  return (
+    <div className="col-md-6">
+      <h3 id="now-viewing">{ props.nowViewing }</h3>
+    </div>
+  );
+}
+
+const LikeCount = () => {
+  return (
+    <Likes 
+      name={"LIKES: "}
+      likeCount={"0"}
+    />
+  );
+}
+
+// PULLS PROPERTIES FROM PARENT COMPONENT, LikeCount
+const Likes = (props) => {
+  return (
+    <div className="col-md-6">
+      <h3 id="likes">{ props.name }<span id="like-count">{ props.likeCount }</span></h3>
+    </div>
+  );
+}
+
+
+
 const ToggleButtons = (props) => {
   return (
     <div className="toggle-buttons">
-      <button>Food</button>
-      <button>Activities</button>
+      <ToggleButton
+        buttonName={"Food"}
+      />
+      <ToggleButton
+        buttonName={"Activities"}
+      />
     </div>
+  );
+}
+
+const ToggleButton = (props) => {
+  return (
+    <button className="btn">{ props.buttonName }</button>
   );
 }
 
@@ -58,15 +148,17 @@ const FoodCards = (props) => {
       <div className="row">
           <div className="col-md-4">
             <div>
-              <div>
-                <img className="side-image" src="https://static1.squarespace.com/static/559eb4cee4b091a272404aaf/t/5a0bd4484192028d4a89a588/1510724722883/IMG_8088+mochiko+chicken.jpg?format=1500w" />
-                <h3 className="title">Tinroof</h3>
-                <p className="description"><a className="website" href="http://www.tinroofmaui.com/" target = " _blank">Tinroof</a> is a new generation mom &amp pop shop, owned by Internationally recognized Chef Sheldon Simeon &amp his wife, Janice.</p>
-                <p className="location">360 Papa Pl, Kahului, HI 96732</p>
-                <p className="rating">Rating: 9/10</p>
-                <p className="reviews">Reviews: 0</p>
-                <button className="btn btn-secondary" type="button">Like</button>
-              </div>
+              <Cards
+                className={"side-image"}
+                src={"https://static1.squarespace.com/static/559eb4cee4b091a272404aaf/t/5a0bd4484192028d4a89a588/1510724722883/IMG_8088+mochiko+chicken.jpg?format=1500w"}
+                title={"Tinroof"}
+                description={"is a new generation mom &amp pop shop, owned by Internationally recognized Chef Sheldon Simeon &amp his wife, Janice."}
+                website={"http://www.tinroofmaui.com/"}
+                location={"60 Papa Pl, Kahului, HI 96732"}
+                rating={"Rating: 9/10"}
+                reviews={"Reviews: 0"}
+                buttonName={"tinroof"}
+              />
             </div>
           </div>
 
@@ -151,6 +243,21 @@ const ActivitiesCards = (props) => {
     </div>
   );
 }
+
+const Cards = (props) => {
+  return (
+    <div>
+      <img className={props.className} src={props.src} />
+      <h3 className="title">{props.title}</h3>
+      <p className="description"><a class="website" href={props.website} target="_blank">{props.title}</a> {props.description}</p>
+      <p className="location">{props.location}</p>
+      <p className="rating">{props.rating}</p>
+      <p className="reviews">{props.reviews}</p>
+      <button className="btn btn-secondary" id={props.buttonName} type="button">Like</button>
+    </div>
+  );
+}
+
 
 const Footer = (props) => {
   return (
