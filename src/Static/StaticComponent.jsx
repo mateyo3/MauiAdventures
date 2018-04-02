@@ -18,13 +18,8 @@ const NavBar = () => {
   return (
     <nav className="navbar navbar-default">
       <NavLogo />
-         <div id="menu-standard" className="nav">
-              <ul>
-                <li id="menu-item" className="saved main-nav text-uppercase font-weight-bold"><a href="#">Saved</a></li>
-                <li id="menu-item" className="sign-in main-nav text-uppercase font-weight-bold"><a href="#">Sign-in</a></li>
-              </ul>
-            </div>
-        </nav>
+      <Navigation />
+    </nav>
   );
 }
 
@@ -55,7 +50,7 @@ const Navigation = () => {
         <ul>
           <NavLink 
                 href={"#"}
-                linkName={"Saved"}
+                linkName={"Liked"}
           />
           <NavLink 
                 href={"#"}
