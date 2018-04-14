@@ -264,7 +264,7 @@ const ActivitiesCards = (props) => {
 const Cards = (props) => {
   return (
     <div>
-      <img className={props.className} src={props.src} />
+      <img className={props.className} src={props.src} alt={props.buttonId} />
       <h3 className="title">{props.title}</h3>
       <p className="description"><a class="website" href={props.website} target="_blank">{props.title}</a> {props.description}</p>
       <p className="location">{props.location}</p>

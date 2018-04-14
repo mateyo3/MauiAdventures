@@ -5,7 +5,7 @@ class StaticComponent extends Component {
     state = {
       recentLike: null,
       likeCount: 0,
-      adventure: [
+      adventures: [
         {
           title: 'Tinroof',
           imgUrl: 'https://static1.squarespace.com/static/559eb4cee4b091a272404aaf/t/5a0bd4484192028d4a89a588/1510724722883/IMG_8088+mochiko+chicken.jpg?format=1500w',
@@ -82,7 +82,7 @@ class StaticComponent extends Component {
     };
 
   updateRecentLike = (adventure) => {
-    if (song !== this.state.recentLike) {
+    if (adventure !== this.state.recentLike) {
       this.setState(() => ({
         recentLike: adventure
       }));
@@ -105,7 +105,7 @@ class StaticComponent extends Component {
 
   updateLikeState = (adventureClicked) => {
     this.setState((prevState) => ({
-      songs: prevState.adventure.map((song) => {
+      songs: prevState.adventure.map((adventure) => {
           if (adventureClicked === adventure.title) {
             return {
               ...adventure,
@@ -120,7 +120,7 @@ class StaticComponent extends Component {
   }
 
   render () {
-    const { recentLike, likeCount, adventure } = this.state;
+    const { recentLike, likeCount, adventures } = this.state;
     return (
       <div>
         <NavBar />
@@ -130,7 +130,7 @@ class StaticComponent extends Component {
         />
         <Container>
           <CardList 
-            adventure={adventure}
+            adventures={adventures}
             updateCurrentLike={this.updateRecentLike}
             updateLikeCount={this.updateLikeCount}
             updateLikeState={this.updateLikeState}
@@ -151,7 +151,6 @@ const NavBar = () => {
   );
 }
 
-// COMPONENT FOR MAIN LOGO
 const NavLogo = () => {
   return (
       <NavLogoLink 
@@ -163,7 +162,6 @@ const NavLogo = () => {
   );
 }
 
-// PULLS PROPERTIES FROM PARENT COMPONENT, NavLogo
 const NavLogoLink = (props) => {
   return (
     <div className="navbar-header">
@@ -191,7 +189,6 @@ const Navigation = () => {
   );
 }
 
-// PULLS PROPERTIES FROM PARENT COMPONENT, NavLinks
 const NavLink = (props) => {
   return (
     <li id="menu-item" className="shop main-nav text-uppercase font-weight-bold">
@@ -228,14 +225,6 @@ const RecentlyLiked = (props) => {
   );
 }
 
-// PULLS PROPERTIES FROM PARENT COMPONENT, RecentLiked
-// const Liked = (props) => {
-//   return (
-//     <div className="col-md-4">
-//       <h3 id="recently-liked">{props.recentLike ? `Recently Liked: ${props.recentLike}` : `Like Something!`}</h3>
-//     </div>
-//   );
-// }
 
 const Category = (props) => {
   return (
@@ -245,7 +234,6 @@ const Category = (props) => {
   );
 }
 
-// PULLS PROPERTIES FROM PARENT COMPONENT, Category
 const NowViewing = (props) => {
   return (
     <div className="col-md-4">
@@ -262,41 +250,12 @@ const LikeCount = (props) => {
   );
 }
 
-// PULLS PROPERTIES FROM PARENT COMPONENT, LikeCount
-// const Likes = (props) => {
-//   return (
-//     <div className="col-md-4">
-//       <h3 id="like-count">{props.likeCount > 0 && `Likes: ${props.likeCount}`}</h3>
-//     </div>
-//   );
-// }
-
-
-
-// const ToggleButtons = (props) => {
-//   return (
-//     <div className="toggle-buttons">
-//       <ToggleButton
-//         buttonName={"Food"}
-//       />
-//       <ToggleButton
-//         buttonName={"Activities"}
-//       />
-//     </div>
-//   );
-// }
-
-// const ToggleButton = (props) => {
-//   return (
-//     <button className="btn">{ props.buttonName }</button>
-//   );
-// }
 
 const CardList = (props) => {
   return (
     <Card.Group itemsPerRow={3}>
       {
-        props.adventure.map((adventure, index) => (
+        props.adventures.map((adventure, index) => (
           <AdeventureCard
             key={index}
             imgUrl={adventure.imgUrl}
@@ -341,19 +300,6 @@ const AdeventureCard = (props) => {
   );
 }
 
-// const Cards = (props) => {
-//   return (
-//     <div>
-//       <img className={props.className} src={props.src} />
-//       <h3 className="title">{props.title}</h3>
-//       <p className="description"><a class="website" href={props.website} target="_blank">{props.title}</a> {props.description}</p>
-//       <p className="location">{props.location}</p>
-//       <p className="rating">{props.rating}</p>
-//       <p className="reviews">{props.reviews}</p>
-//       <button className="btn btn-secondary" id={props.buttonId} type="button">Like</button>
-//     </div>
-//   );
-// }
 
 const LikeState = (props) => {
   return (
