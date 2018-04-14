@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Menu, Container, Card, Button } from 'semantic-ui-react';
 
-class StaticComponent extends React.Component {
+class StaticComponent extends Component {
     state = {
-      recentlyLike: null,
+      recentLike: null,
       likeCount: 0,
       adventure: [
         {
@@ -83,10 +83,15 @@ class StaticComponent extends React.Component {
 
 
   render () {
+    const { recentLike, likeCount, adventure } = this.state;
+    const { } = this.state;
     return (
       <div>
         <NavBar />
-        <Header />
+        <Header 
+          recentLike={recentLike}
+          likeCount={likeCount}
+        />
         <FoodCards />
         <ActivitiesCards />
         <Footer />
@@ -153,7 +158,7 @@ const NavLink = (props) => {
   );
 }
 
-const Header = () => {
+const Header = (props) => {
   return (
     <header className="header">
       <div className="row">
@@ -165,19 +170,19 @@ const Header = () => {
   );
 }
 
-const RecentlyLiked = () => {
+const RecentlyLiked = (props) => {
   return (
     <Liked 
-      liked={"RECENTLY LIKED:"}
+      recentLike={props.recentLike}
     />
   );
 }
 
-// PULLS PROPERTIES FROM PARENT COMPONENT, RecentlyLiked
+// PULLS PROPERTIES FROM PARENT COMPONENT, RecentLiked
 const Liked = (props) => {
   return (
     <div className="col-md-4">
-      <h3 id="recently-liked">{ props.liked }</h3>
+      <h3 id="recently-liked">{props.recentLike ? `Recently Liked: ${props.recentLike}` : `Like Something!`}</h3>
     </div>
   );
 }
